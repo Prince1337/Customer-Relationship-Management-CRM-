@@ -11,6 +11,7 @@ pipeline {
 
     stage('Build') {
       steps {
+		sh 'chmod +x ./backend/gradlew'
         sh './backend/gradlew clean build'
         sh 'docker-compose -f build'
       }
