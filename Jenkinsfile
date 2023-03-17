@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Angular') {
             steps {
-                dir('frontend') {
+                dir('frontend/crm-project') {
                     sh 'npm install'
                     sh 'npm run build'
                 }
