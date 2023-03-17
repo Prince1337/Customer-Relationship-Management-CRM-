@@ -19,7 +19,7 @@ pipeline {
         stage('Build SpringBoot') {
             steps {
                 dir('backend') {
-					chmod +x gradlew
+					sh 'chmod +x gradlew'
                     sh './gradlew build'
                 }
             }
