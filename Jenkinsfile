@@ -11,14 +11,7 @@ pipeline {
     }
 
     stages {
-        stage('Build Angular') {
-            steps {
-                dir('frontend/crm-project') {
-                    sh 'npm install'
-                    sh 'npm run build'
-                }
-            }
-        }
+        
 		
         stage('Build SpringBoot') {
             steps {
@@ -28,6 +21,15 @@ pipeline {
 					sh 'java -version'
 					sh 'chmod +x gradlew'
                     sh './gradlew clean build'
+                }
+            }
+        }
+		
+		stage('Build Angular') {
+            steps {
+                dir('frontend/crm-project') {
+                    sh 'npm install'
+                    sh 'npm run build'
                 }
             }
         }
