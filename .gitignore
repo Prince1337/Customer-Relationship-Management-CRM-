@@ -20,3 +20,6 @@ dist/
 # Gradle
 *.gradle
 build/
+
+# mysql
+**/mysql-data/
