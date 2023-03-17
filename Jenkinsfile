@@ -20,7 +20,6 @@ pipeline {
             }
         }
 		
-		stages {
         stage('Build SpringBoot') {
             steps {
                 dir('backend') {
