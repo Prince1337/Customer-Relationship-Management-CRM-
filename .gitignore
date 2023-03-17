@@ -1,0 +1,22 @@
+# Java / SpringBoot
+**/target/
+**/build/
+**/out/
+
+# Node.js / Angular
+node_modules/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Maven
+*.iml
+*.iws
+*.ipr
+*.jar
+
+# Gradle
+*.gradle
+build/

@@ -1,0 +1,72 @@
+version: "3.9"
+services:
+    backend:
+        container_name: backend
+        image: openjdk:17-jdk-alpine3.14
+        ports:
+            - "8080:8080"
+        depends_on:
+            - mysql
+        volumes:
+            - .:/app
+        working_dir: /app/backend
+        command: ["./gradlew", "bootRun"]
+        networks:
+            - crm-network
+        environment:
+          - MYSQL_HOST=mysql
+          - MYSQL_USERNAME=crm
+          - MYSQL_PASSWORD=crm
+          - MYSQL_DATABASE=crmdatabase
+          - MYSQL_PORT=3306
+            
+    frontend:
+        container_name: frontend
+        build:
+            context: ./frontend/crm-project
+            dockerfile: Dockerfile.dev
+        ports:
+            - "4200:4200"
+        volumes:
+            - ./frontend/crm-project:/frontend
+        environment:
+            - NODE_ENV=dev
+        command: ng serve --host 0.0.0.0
+        networks:
+          - crm-network
+        
+    mysql:
+        container_name: mysql
+        image: mysql:latest
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: M354224331315m$
+            MYSQL_USER: crm
+            MYSQL_PASSWORD: crm
+            MYSQL_DATABASE: crmdatabase
+        volumes:
+            - ./mysql-data:/var/lib/mysql
+        command: mysqld --skip-name-resolve=0
+        networks:
+            - crm-network
+        restart: always
+
+    jenkins:
+        container_name: jenkins
+        image: jenkins/jenkins:lts
+        ports:
+            - "8081:8080"
+            - "50000:50000"
+        volumes:
+            - jenkins_home:/var/jenkins_home
+            - /var/run/docker.sock:/var/run/docker.sock
+        networks:
+            - crm-network
+        
+volumes:
+    jenkins_home:            
+            
+networks:
+  crm-network:
+    driver: bridge
