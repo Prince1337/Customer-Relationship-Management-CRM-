@@ -4,9 +4,12 @@ pipeline {
 
     stage('Build') {
       steps {
-		sh 'chmod +x ./backend/gradlew'
-        sh './backend/gradlew clean build'
-        sh 'docker-compose -f build'
+		dir('backend') {
+			sh 'chmod +x gradlew'
+			sh './gradlew wrapper'
+			sh './gradlew clean build'
+			sh './gradlew test'
+		}
       }
     }
 
