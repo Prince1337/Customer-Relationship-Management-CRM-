@@ -1,6 +1,7 @@
 pipeline {
   agent any
   stages {
+<<<<<<< HEAD
     
 	stage('Checkout Code') {
           steps {
@@ -14,29 +15,37 @@ pipeline {
 			sh 'sudo apt-get install -y nodejs'
 		  }
 		}
+=======
+    stage('Checkout Code') {
+      steps {
+        git(url: 'https://github.com/Prince1337/Customer-Relationship-Management-CRM-.git', branch: 'main')
+      }
+    }
+>>>>>>> fd8deb873c5d8523e48e5bfa964611f4ec765ca3
 
     stage('Build') {
-            steps {
-                sh "./gradlew clean build"
-                sh "docker-compose -f build"
-            }
+      steps {
+        sh './gradlew clean build'
+        sh 'docker-compose -f build'
+      }
     }
-        
-	stage('Test on Development Environment') {
-		environment {
-			DB_HOST = "db-dev"
-			DB_NAME = "mysql"
-		}
-		steps {
-			sh "docker-compose -f docker-compose.yml up -d mysql"
-			sh "docker-compose -f docker-compose.yml run --rm customerrelationshipmanagementcrm ./gradlew test"
-		}
-		post {
-			always {
-				sh "docker-compose -f docker-compose.yml down -v"
-			}
-		}
-	}
+
+    stage('Test on Development Environment') {
+      environment {
+        DB_HOST = 'db-dev'
+        DB_NAME = 'mysql'
+      }
+      post {
+        always {
+          sh 'docker-compose -f docker-compose.yml down -v'
+        }
+
+      }
+      steps {
+        sh 'docker-compose -f docker-compose.yml up -d mysql'
+        sh 'docker-compose -f docker-compose.yml run --rm customerrelationshipmanagementcrm ./gradlew test'
+      }
+    }
 
   }
 }
