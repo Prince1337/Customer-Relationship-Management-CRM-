@@ -1,13 +1,12 @@
-pipeline {
   agent any
   stages {
 
     stage('Build') {
       steps {
 		dir('backend') {
-			sh 'sudo chmod +x gradlew'
-			sh './gradlew --no-daemon clean build'
-			sh './gradlew --no-daemon test'
+			sh 'chmod 755 gradlew'
+			sh './gradlew clean build'
+			sh './gradlew test'
 		}
       }
     }
@@ -19,12 +18,13 @@ pipeline {
       }
       post {
         always {
-          sh 'docker-compose -f docker-compose.yml down --remove-orphans'
+          sh 'docker-compose -f docker-compose.yml down -v'
         }
+
       }
       steps {
         sh 'docker-compose -f docker-compose.yml up -d mysql'
-        sh 'docker-compose -f docker-compose.yml run --rm customerrelationshipmanagementcrm ./gradlew --no-daemon test'
+        sh 'docker-compose -f docker-compose.yml run --rm customerrelationshipmanagementcrm ./gradlew test'
       }
     }
 
