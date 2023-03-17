@@ -5,9 +5,9 @@ pipeline {
     stage('Build') {
       steps {
 		dir('backend') {
-			sh 'chmod +x gradlew'
-			sh './gradlew clean build'
-			sh './gradlew test'
+			sh 'sudo chmod +x gradlew'
+			sh './gradlew --no-daemon clean build'
+			sh './gradlew --no-daemon test'
 		}
       }
     }
@@ -19,13 +19,12 @@ pipeline {
       }
       post {
         always {
-          sh 'docker-compose -f docker-compose.yml down -v'
+          sh 'docker-compose -f docker-compose.yml down --remove-orphans'
         }
-
       }
       steps {
         sh 'docker-compose -f docker-compose.yml up -d mysql'
-        sh 'docker-compose -f docker-compose.yml run --rm customerrelationshipmanagementcrm ./gradlew test'
+        sh 'docker-compose -f docker-compose.yml run --rm customerrelationshipmanagementcrm ./gradlew --no-daemon test'
       }
     }
 
