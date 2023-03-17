@@ -1,31 +1,32 @@
-  agent any
-  stages {
+pipeline {
+    agent any
 
-    stage('Build') {
-      steps {
-		dir('backend') {
-			sh 'chmod 755 gradlew'
-			sh './gradlew clean build'
-			sh './gradlew test'
-		}
-      }
-    }
-
-    stage('Test on Development Environment') {
-      environment {
-        DB_HOST = 'db-dev'
-        DB_NAME = 'mysql'
-      }
-      post {
-        always {
-          sh 'docker-compose -f docker-compose.yml down -v'
+    stages {
+        stage('Build Angular') {
+            steps {
+                dir('frontend') {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
+            }
+        }
+        
+        stage('Build SpringBoot') {
+            steps {
+                dir('backend') {
+                    sh './gradlew build'
+                }
+            }
         }
 
-      }
-      steps {
-        sh 'docker-compose -f docker-compose.yml up -d mysql'
-        sh 'docker-compose -f docker-compose.yml run --rm customerrelationshipmanagementcrm ./gradlew test'
-      }
-    }
+        stage('Docker Build') {
+            steps {
+                sh 'docker-compose build'
+            }
+        }
 
-  }
+        stage('Deploy') {
+            
+        }
+	}
+}
