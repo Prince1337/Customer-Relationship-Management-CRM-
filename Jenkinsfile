@@ -2,13 +2,6 @@ pipeline {
   agent any
   stages {
 
-    
-	stage('Checkout Code') {
-          steps {
-            git(url: 'https://github.com/Prince1337/Customer-Relationship-Management-CRM-.git', branch: 'main')
-          }
-        }
-
     stage('Build') {
       steps {
 		sh 'chmod +x ./backend/gradlew'
