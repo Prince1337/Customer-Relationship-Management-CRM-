@@ -8,17 +8,10 @@ pipeline {
             git(url: 'https://github.com/Prince1337/Customer-Relationship-Management-CRM-.git', branch: 'main')
           }
         }
-		
-	stage('Install Node.js and npm') {
-		  steps {
-			sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
-			sh 'sudo apt-get install -y nodejs'
-		  }
-		}
 
     stage('Build') {
       steps {
-        sh './gradlew clean build'
+        sh './backend/gradlew clean build'
         sh 'docker-compose -f build'
       }
     }
