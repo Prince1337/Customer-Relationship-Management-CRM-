@@ -24,9 +24,5 @@ pipeline {
                 sh 'docker-compose build'
             }
         }
-
-        stage('Deploy') {
-            
-        }
 	}
 }
