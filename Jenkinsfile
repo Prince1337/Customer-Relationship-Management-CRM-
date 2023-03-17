@@ -11,14 +11,14 @@ pipeline {
     stage('Build') {
             steps {
                 sh "./gradlew clean build"
-                sh "docker-compose -f docker-compose.dev.yml build"
+                sh "docker-compose -f build"
             }
     }
         
 	stage('Test on Development Environment') {
 		environment {
 			DB_HOST = "db-dev"
-			DB_NAME = "my-app-dev-db"
+			DB_NAME = "mysql"
 		}
 		steps {
 			sh "docker-compose -f docker-compose.yml up -d mysql"
@@ -26,7 +26,7 @@ pipeline {
 		}
 		post {
 			always {
-				sh "docker-compose -f docker-compose.dev.yml down -v"
+				sh "docker-compose -f docker-compose.yml down -v"
 			}
 		}
 	}
