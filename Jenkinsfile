@@ -3,7 +3,7 @@ pipeline {
 	
 	tools {
         // Definiere die Node.js-Version, die auf dem Jenkins-Server installiert werden soll
-        nodejs 'node-14.17.0'
+        nodejs 'node'
     }
 
     stages {
