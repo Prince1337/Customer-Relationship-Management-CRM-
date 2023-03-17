@@ -6,7 +6,6 @@ pipeline {
       steps {
 		dir('backend') {
 			sh 'chmod +x gradlew'
-			sh './gradlew wrapper'
 			sh './gradlew clean build'
 			sh './gradlew test'
 		}
