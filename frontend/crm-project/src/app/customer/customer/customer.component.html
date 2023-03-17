@@ -1,0 +1,24 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input formControlName="name" type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input formControlName="city" type="text" class="form-control" id="city" name="city">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input formControlName="phone" type="text" class="form-control" id="phone" name="phone">
+    </div>
+    <div class="form-group">
+      <label for="email">E-Mail:</label>
+      <input formControlName="email" type="email" class="form-control" id="email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="job">Job:</label>
+      <input formControlName="job" type="text" class="form-control" id="job" name="job">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
