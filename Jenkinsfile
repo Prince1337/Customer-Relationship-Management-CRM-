@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-<<<<<<< HEAD
+
     
 	stage('Checkout Code') {
           steps {
@@ -15,13 +15,6 @@ pipeline {
 			sh 'sudo apt-get install -y nodejs'
 		  }
 		}
-=======
-    stage('Checkout Code') {
-      steps {
-        git(url: 'https://github.com/Prince1337/Customer-Relationship-Management-CRM-.git', branch: 'main')
-      }
-    }
->>>>>>> fd8deb873c5d8523e48e5bfa964611f4ec765ca3
 
     stage('Build') {
       steps {
