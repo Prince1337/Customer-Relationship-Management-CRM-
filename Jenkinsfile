@@ -15,10 +15,12 @@ pipeline {
 		
         stage('Build SpringBoot') {
             steps {
-                echo 'executing gradle ...'
-				withGradle() {
-					sh './gradlew -v'
-                }
+				dir('backend') {
+					echo 'executing gradle ...'
+					withGradle() {
+						sh './gradlew -v'
+					}
+				}
             }
         }
 		
