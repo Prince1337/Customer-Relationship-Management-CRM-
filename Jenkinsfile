@@ -15,13 +15,9 @@ pipeline {
 		
         stage('Build SpringBoot') {
             steps {
-                dir('backend') {
-					sh 'export JAVA_HOME=/opt/java/openjdk/bin/java'
-					sh 'env | grep -e PATH -e JAVA_HOME'
-					sh 'which java'
-					sh 'java -version'
-					sh 'chmod +x gradlew'
-                    sh './gradlew clean build'
+                echo 'executing gradle ...'
+				withGradle() {
+					sh './gradlew -v'
                 }
             }
         }
