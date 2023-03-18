@@ -21,6 +21,7 @@ pipeline {
 					sh 'gradle init'
 					sh 'gradle wrapper'
 					sh './gradlew -v'
+					sh './gradlew build'
 				}
             }
         }
