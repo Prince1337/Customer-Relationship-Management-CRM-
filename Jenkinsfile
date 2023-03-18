@@ -17,6 +17,7 @@ pipeline {
 					echo 'executing gradle ...'
 					withGradle() {
 						sh 'chmod +x gradlew'
+						sh 'which gradle'
 						sh 'rm -rf .gradle'
 						sh 'gradle wrapper'
 						sh './gradlew -v'
