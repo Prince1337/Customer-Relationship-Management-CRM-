@@ -16,7 +16,6 @@ pipeline {
         stage('Build SpringBoot') {
             steps {
                 dir('backend') {
-					sh 'env | grep -e PATH -e JAVA_HOME'
 					sh 'which java'
 					sh 'java -version'
 					sh 'chmod +x gradlew'
