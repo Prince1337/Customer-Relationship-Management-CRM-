@@ -18,8 +18,6 @@ pipeline {
 					echo 'executing gradle ...'
 					sh 'chmod +x gradlew'
 					sh 'which gradle'
-					sh 'gradle init'
-					sh 'gradle wrapper'
 					sh './gradlew -v'
 				}
             }
