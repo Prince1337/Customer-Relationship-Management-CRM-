@@ -8,8 +8,8 @@ services:
         depends_on:
             - mysql
         volumes:
-            - .:/app
-        working_dir: /app/backend
+            - ./backend:/app
+        working_dir: /app
         command: ["./gradlew", "bootRun"]
         networks:
             - crm-network

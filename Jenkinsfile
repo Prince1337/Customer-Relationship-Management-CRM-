@@ -6,12 +6,17 @@ pipeline {
         nodejs 'node'
 		// Define the JDK version to be used for building the application
         // Define the Gradle version to be used for building the application
-		gradle 'Gradle'
     }
 
     stages {
-        
-		
+	
+		stage('Install Gradle') {
+            steps {
+                sh 'wget https://services.gradle.org/distributions/gradle-6.7.1-bin.zip'
+                sh 'unzip -d /opt gradle-6.7.1-bin.zip'
+            }
+        }
+       
         stage('Build SpringBoot') {
             steps {
 				dir('backend') {
@@ -26,6 +31,16 @@ pipeline {
             }
         }
 		
+		stage('Test SpringBoot') {
+            steps {
+                dir('backend') {
+					sh 'chmod +x gradlew'
+					sh './gradlew tasks'
+                    sh './gradlew test'
+                }
+            }
+        }
+		
 		stage('Build Angular') {
             steps {
                 dir('frontend/crm-project') {
@@ -35,16 +50,6 @@ pipeline {
             }
         }
         
-        stage('Test SpringBoot') {
-            steps {
-                dir('backend') {
-					sh 'chmod +x gradlew'
-					sh './gradlew tasks'
-                    sh './gradlew check'
-                }
-            }
-        }
-
         stage('Package SpringBoot') {
             steps {
                 dir('backend') {
