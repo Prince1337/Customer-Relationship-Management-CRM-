@@ -5,9 +5,7 @@ pipeline {
         // Definiere die Node.js-Version, die auf dem Jenkins-Server installiert werden soll
         nodejs 'node'
 		// Define the JDK version to be used for building the application
-        jdk 'jdk'
         // Define the Gradle version to be used for building the application
-        gradle 'Gradle'
     }
 
     stages {
