@@ -7,7 +7,7 @@ plugins {
 jar {
     manifest {
         attributes(
-            'Main-Class': 'Customer.Relationship.Manager.CRM.Application.java'
+            'Main-Class': 'Customer.Relationship.Manager.CRM.Application'
         )
     }
 }
