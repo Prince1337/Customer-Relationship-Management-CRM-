@@ -18,8 +18,9 @@ pipeline {
 					echo 'executing gradle ...'
 					sh 'ls'
 					sh 'chmod +x gradlew'
-					sh './gradlew wrapper'
 					sh './gradlew build'
+					sh './gradlew wrapper'
+					
 				}
             }
         }
