@@ -18,7 +18,8 @@ dist/
 *.jar
 
 # Gradle
-*.gradle
+.gradle
+settings.gradle
 build/
 
 # mysql
