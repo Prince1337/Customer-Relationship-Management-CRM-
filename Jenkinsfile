@@ -20,6 +20,7 @@ pipeline {
 					sh 'chmod +x gradlew'
 					sh './gradlew wrapper'
 					sh './gradlew build'
+					echo hi
 				}
             }
         }
