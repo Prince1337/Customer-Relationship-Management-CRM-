@@ -6,6 +6,7 @@ pipeline {
         nodejs 'node'
 		// Define the JDK version to be used for building the application
         // Define the Gradle version to be used for building the application
+		gradle 'Gradle_1'
     }
 
     stages {
