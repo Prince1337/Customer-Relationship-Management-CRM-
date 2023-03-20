@@ -17,10 +17,5 @@ dist/
 *.ipr
 *.jar
 
-# Gradle
-.gradle
-settings.gradle
-build/
-
 # mysql
 **/mysql-data/
