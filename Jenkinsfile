@@ -17,8 +17,6 @@ pipeline {
 				dir('backend') {
 					echo 'executing gradle ...'
 					sh 'ls'
-					sh 'gradle init'
-					sh 'gradle build'
 					sh 'chmod +x gradlew'
 					sh './gradlew wrapper'
 					sh './gradlew build'
