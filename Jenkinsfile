@@ -28,7 +28,12 @@ pipeline {
 		stage('Test SpringBoot') {
             steps {
                 dir('backend') {
+					echo 'executing gradle ...'
+					sh 'gradle init'
+					sh 'gradle build'
 					sh 'chmod +x gradlew'
+					sh './gradlew wrapper'
+					sh './gradlew build'
                     sh './gradlew test'
                 }
             }
