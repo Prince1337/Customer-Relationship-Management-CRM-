@@ -2,7 +2,9 @@ version: "3.9"
 services:
     backend:
         container_name: backend
-        image: openjdk:17-jdk-alpine3.14
+        build:
+            context: ./backend/
+            dockerfile: Dockerfile
         ports:
             - "8080:8080"
         depends_on:
