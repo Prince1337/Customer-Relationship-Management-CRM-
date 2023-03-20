@@ -6,7 +6,7 @@ pipeline {
         nodejs 'node'
 		// Define the JDK version to be used for building the application
         // Define the Gradle version to be used for building the application
-		gradle 'Gradle_1'
+		gradle 'Gradle_1'  
     }
 
     stages {
@@ -17,7 +17,6 @@ pipeline {
 				dir('backend') {
 					echo 'executing gradle ...'
 					sh 'ls'
-					sh 'gradle init'
 					sh 'gradle build'
 					sh 'chmod +x gradlew'
 					sh './gradlew wrapper'
