@@ -52,22 +52,7 @@ services:
         command: mysqld --skip-name-resolve=0
         networks:
             - crm-network
-        restart: always
-
-    jenkins:
-        container_name: jenkins
-        image: jenkins/jenkins:lts
-        ports:
-            - "8081:8080"
-            - "50000:50000"
-        volumes:
-            - jenkins_home:/var/jenkins_home
-            - /var/run/docker.sock:/var/run/docker.sock
-        networks:
-            - crm-network
-        
-volumes:
-    jenkins_home:            
+        restart: always         
             
 networks:
   crm-network:
