@@ -4,10 +4,10 @@
 For further reference, please consider the following sections:
 
 * [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.0-SNAPSHOT/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.0-SNAPSHOT/gradle-plugin/reference/html/#build-image)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.1.0-SNAPSHOT/reference/htmlsingle/#data.sql.jpa-and-spring-data)
-* [Rest Repositories](https://docs.spring.io/spring-boot/docs/3.1.0-SNAPSHOT/reference/htmlsingle/#howto.data-access.exposing-spring-data-repositories-as-rest)
+* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.0-M1/gradle-plugin/reference/html/)
+* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.0-M1/gradle-plugin/reference/html/#build-image)
+* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.1.0-M1/reference/htmlsingle/#data.sql.jpa-and-spring-data)
+* [Rest Repositories](https://docs.spring.io/spring-boot/docs/3.1.0-M1/reference/htmlsingle/#howto.data-access.exposing-spring-data-repositories-as-rest)
 
 ### Guides
 The following guides illustrate how to use some features concretely:
